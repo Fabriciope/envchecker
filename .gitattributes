@@ -1,0 +1,14 @@
+# Normaliza finais de linha: o shebang de bin/envchecker quebra com CRLF
+* text=auto eol=lf
+*.php diff=php
+
+# Fora do pacote distribuído (zip que o Composer baixa do GitHub)
+/.github                     export-ignore
+/tests                       export-ignore
+/.gitattributes              export-ignore
+/.gitignore                  export-ignore
+/phpunit.xml                 export-ignore
+/composer.lock               export-ignore
+/.php-cs-fixer.dist.php      export-ignore
+/.phpactor.json              export-ignore
+/docs                        export-ignore
