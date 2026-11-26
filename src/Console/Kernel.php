@@ -101,7 +101,7 @@ final class Kernel
     {
         if ([] !== $keys) {
             $this->output->line(
-                $this->output->style(sprintf('%d %s: ', count($keys), $label), $color).implode(', ', $keys)
+                $this->output->style(\sprintf('%d %s: ', \count($keys), $label), $color).implode(', ', $keys)
             );
         }
     }

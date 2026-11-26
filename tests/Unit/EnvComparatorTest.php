@@ -3,7 +3,7 @@
 declare(strict_types=1);
 use Fabriciope\EnvChecker\Env\Comparator;
 
-it('should identify that the arrays have no differences', function () {
+it('should identify that the arrays have no differences', function (): void {
     $comparator = new Comparator(
         base: ['NAME' => 'joao', 'AGE' => '20'],
         against: ['AGE' => '18', 'NAME' => 'example'],
@@ -12,7 +12,7 @@ it('should identify that the arrays have no differences', function () {
     expect($comparator->hasDifferences())->not->toBeTrue();
 });
 
-it('should identify that the arrays have differences', function () {
+it('should identify that the arrays have differences', function (): void {
     $comparator = new Comparator(
         base: ['NAME' => 'pedro'],
         against: ['NAME' => 'example', 'AGE' => '18'],
@@ -21,7 +21,7 @@ it('should identify that the arrays have differences', function () {
     expect($comparator->hasDifferences())->toBeTrue();
 });
 
-it('should identify whether the base .env file has any missing keys', function () {
+it('should identify whether the base .env file has any missing keys', function (): void {
     $comparator = new Comparator(
         base: ['NAME' => 'pedro'],
         against: ['NAME' => 'example', 'AGE' => '18', 'OCCUPATION' => 'example'],
@@ -30,7 +30,7 @@ it('should identify whether the base .env file has any missing keys', function (
     expect($comparator->hasMissingKeys())->toBeTrue();
 });
 
-it('should identify which keys are missing in the base .env file', function () {
+it('should identify which keys are missing in the base .env file', function (): void {
     $comparator = new Comparator(
         base: ['NAME' => 'pedro'],
         against: ['NAME' => 'example', 'AGE' => '18', 'OCCUPATION' => 'example'],
@@ -39,7 +39,7 @@ it('should identify which keys are missing in the base .env file', function () {
     expect($comparator->missingKeys)->toEqual(['AGE', 'OCCUPATION']);
 });
 
-it('should identify the extra keys in the base .env file', function () {
+it('should identify the extra keys in the base .env file', function (): void {
     $comparator = new Comparator(
         base: ['NAME' => 'pedro', 'GENDER' => 'male'],
         against: ['NAME' => 'example'],

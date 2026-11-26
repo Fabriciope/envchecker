@@ -42,7 +42,7 @@ final class Input
      */
     public function parse(): void
     {
-        $arguments = array_slice($this->argv, 1);
+        $arguments = \array_slice($this->argv, 1);
 
         foreach ($arguments as $argument) {
             $argument = trim($argument);
@@ -84,7 +84,7 @@ final class Input
 
     public function hasLongOption(string $longOptionName): bool
     {
-        return array_key_exists($longOptionName, $this->longOptions);
+        return \array_key_exists($longOptionName, $this->longOptions);
     }
 
     public function getLongOption(string $longOptionName, string $default = ''): bool|int|string
@@ -93,7 +93,7 @@ final class Input
             return $default;
         }
 
-        if (is_null($this->longOptions[$longOptionName])) {
+        if (null === $this->longOptions[$longOptionName]) {
             throw new InvalidCommandArgumentException($longOptionName);
         }
 
@@ -107,8 +107,8 @@ final class Input
 
     private function validateArgument(string $argumentName, mixed $value): bool
     {
-        return '' != $value
-            && in_array($argumentName, self::ACCEPTED_OPTIONS, true)
-            && ('format' !== $argumentName || in_array($value, Kernel::ACCEPTED_FORMATS, true));
+        return null !== $value && '' !== $value
+            && \in_array($argumentName, self::ACCEPTED_OPTIONS, true)
+            && ('format' !== $argumentName || \in_array($value, Kernel::ACCEPTED_FORMATS, true));
     }
 }

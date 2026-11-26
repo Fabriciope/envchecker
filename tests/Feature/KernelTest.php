@@ -19,7 +19,7 @@ function runEnvChekcer(string ...$args): array
     return [$exitCode, stream_get_contents($out), stream_get_contents($err)];
 }
 
-test('the exit code should be 0 when the files match', function () {
+test('the exit code should be 0 when the files match', function (): void {
     $baseEnvFile = __DIR__.'/../Fixtures/ok/.env';
     $againstEnvFile = __DIR__.'/../Fixtures/ok/.env.example';
     [$code, $stdout, $sdterr] = runEnvChekcer("--base={$baseEnvFile}", "--against={$againstEnvFile}");
@@ -27,7 +27,7 @@ test('the exit code should be 0 when the files match', function () {
     expect($code)->toEqual(Kernel::SUCCESS);
 });
 
-test('the exit code should be 1 when the files do not match', function () {
+test('the exit code should be 1 when the files do not match', function (): void {
     $baseEnvFile = __DIR__.'/../Fixtures/with_differences/.env';
     $againstEnvFile = __DIR__.'/../Fixtures/with_differences/.env.example';
     [$code] = runEnvChekcer("--base={$baseEnvFile}", "--against={$againstEnvFile}");
@@ -35,7 +35,7 @@ test('the exit code should be 1 when the files do not match', function () {
     expect($code)->toEqual(Kernel::DIFFERENCES_ERROR);
 });
 
-it('should identify when an invalid flag is passed to the command', function () {
+it('should identify when an invalid flag is passed to the command', function (): void {
     [$code, $stdout, $stderr] = runEnvChekcer('-x');
 
     expect($code)->toEqual(Kernel::USAGE_ERROR)
@@ -44,7 +44,7 @@ it('should identify when an invalid flag is passed to the command', function () 
     ;
 });
 
-it('should identify when an invalid env file is passed to the command via the flags', function () {
+it('should identify when an invalid env file is passed to the command via the flags', function (): void {
     $envName = '.wrong-env';
     $baseEnvFile = __DIR__."/../Fixtures/with_differences/{$envName}";
     [$code, $stdout, $stderr] = runEnvChekcer("--base={$baseEnvFile}");
@@ -55,7 +55,7 @@ it('should identify when an invalid env file is passed to the command via the fl
     ;
 });
 
-it('should return an error when an incorrect value is passed to the format flag', function () {
+it('should return an error when an incorrect value is passed to the format flag', function (): void {
     $baseEnvFile = __DIR__.'/../Fixtures/ok/.env';
     $againstEnvFile = __DIR__.'/../Fixtures/ok/.env.example';
     [$code, , $sdterr] = runEnvChekcer("--base={$baseEnvFile}", "--against={$againstEnvFile}", '--format=wrong-format');

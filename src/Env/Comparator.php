@@ -41,6 +41,6 @@ final class Comparator
 
     public function hasMissingKeys(): bool
     {
-        return count($this->missingKeys) > 0;
+        return \count($this->missingKeys) > 0;
     }
 }

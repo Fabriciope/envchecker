@@ -9,4 +9,5 @@ arch('o domínio não conhece o terminal')
 
 arch('nada de funções de debug no código distribuído')
     ->expect(['dd', 'dump', 'var_dump'])
-    ->not->toBeUsed();
+    ->not->toBeUsed()
+;

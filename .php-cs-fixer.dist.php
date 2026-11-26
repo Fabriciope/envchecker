@@ -6,10 +6,13 @@ use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
 return (new Config())
-    ->setRiskyAllowed(false)
+    ->setRiskyAllowed(true)
     ->setRules([
         '@auto' => true,
-        '@PhpCsFixer' => true
+        '@PhpCsFixer' => true,
+        '@PhpCsFixer:risky' => true,
+        // Pest faz bind de $this nas closures dos testes; closures static quebram isso.
+        'static_lambda' => false,
     ])
     // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
     ->setFinder(

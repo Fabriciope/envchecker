@@ -39,6 +39,6 @@ readonly class PathResolver
             || str_starts_with($path, '\\')
             || 1 === preg_match('~^[A-Za-z]:[\\\/]~', $path);   // C:\ ou C:/
 
-        return $isAbsolute ? $path : rtrim($base, '/\\').DIRECTORY_SEPARATOR.$path;
+        return $isAbsolute ? $path : rtrim($base, '/\\').\DIRECTORY_SEPARATOR.$path;
     }
 }
