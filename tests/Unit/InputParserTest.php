@@ -28,9 +28,9 @@ describe('parsing arguments', function (): void {
     });
 
     it("should recognize long flags with values after '='", function (): void {
-        $flagName = 'base';
+        $flagName      = 'base';
         $valueFakeFlag = '.env.test';
-        $input = makeInput("--{$flagName}={$valueFakeFlag}"); // command -> ./bin/envchecker --base=.env.test
+        $input         = makeInput("--{$flagName}={$valueFakeFlag}"); // command -> ./bin/envchecker --base=.env.test
 
         expect($input->hasLongOption($flagName))->toBeTrue();
         expect($input->getLongOption($flagName))->toEqual($valueFakeFlag);
@@ -46,7 +46,7 @@ describe('reading options', function (): void {
         $input = makeInput(); // command -> ./bin/envchecker
 
         $defaultValue = 'default_value';
-        $optionValue = $input->getLongOption('invalidArgument', $defaultValue);
+        $optionValue  = $input->getLongOption('invalidArgument', $defaultValue);
 
         expect($optionValue)->toEqual($defaultValue);
     });

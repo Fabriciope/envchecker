@@ -35,7 +35,7 @@ final class Kernel
         try {
             $this->input->parse();
 
-            $pathResolver = PathResolver::fromEnvironment();
+            $pathResolver  = PathResolver::fromEnvironment();
             $envComparator = new EnvComparator(
                 EnvParser::parseFile($this->resolvePath($pathResolver, 'base', '.env')),
                 EnvParser::parseFile($this->resolvePath($pathResolver, 'against', '.env.example')),
@@ -91,9 +91,9 @@ final class Kernel
     {
         $this->output->line(json_encode([
             'has_differences' => $comparator->hasDifferences(),
-            'missing_keys' => $comparator->missingKeys,
-            'empty_keys' => $comparator->emptyKeys,
-            'extra_keys' => $comparator->extraKeys,
+            'missing_keys'    => $comparator->missingKeys,
+            'empty_keys'      => $comparator->emptyKeys,
+            'extra_keys'      => $comparator->extraKeys,
         ], JSON_THROW_ON_ERROR | JSON_INVALID_UTF8_SUBSTITUTE));
     }
 

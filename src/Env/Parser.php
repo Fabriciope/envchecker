@@ -26,7 +26,7 @@ final class Parser
                 $line = substr($line, 7);
             }
 
-            [$key, $value] = array_pad(explode('=', $line, 2), 2, '');
+            [$key, $value]    = array_pad(explode('=', $line, 2), 2, '');
             $vars[trim($key)] = trim(trim($value), '"\'');
         }
 

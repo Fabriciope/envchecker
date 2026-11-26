@@ -15,7 +15,7 @@ readonly class PathResolver
 
     public static function fromEnvironment(): self
     {
-        $cwd = getcwd() ?: '.';
+        $cwd  = getcwd() ?: '.';
         $root = class_exists(InstalledVersions::class)
             ? realpath(InstalledVersions::getRootPackage()['install_path'])
             : false;

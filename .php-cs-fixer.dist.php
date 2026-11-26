@@ -13,6 +13,12 @@ return (new Config())
         '@PhpCsFixer:risky' => true,
         // Pest faz bind de $this nas closures dos testes; closures static quebram isso.
         'static_lambda' => false,
+        'binary_operator_spaces' => [
+            'operators' => [
+                '=>' => 'align_single_space_minimal',
+                '=' => 'align_single_space_minimal',
+            ],
+        ],
     ])
     // 💡 by default, Fixer looks for `*.php` files excluding `./vendor/` - here, you can groom this config
     ->setFinder(

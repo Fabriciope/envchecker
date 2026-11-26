@@ -22,7 +22,7 @@ final class Comparator
         private array $against
     ) {
         $this->missingKeys = array_keys(array_diff_key($against, $base));
-        $this->emptyKeys = array_keys(array_filter(
+        $this->emptyKeys   = array_keys(array_filter(
             array_intersect_key($base, $against),
             fn (string $value): bool => '' === $value,
         ));
